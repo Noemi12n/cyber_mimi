@@ -52,6 +52,12 @@ Route::post('/facturas_detalles','FacturasController@detalles')->name('facturas.
 
 Route::resource('facturas','FacturasController');
 
-Route::get('/facturas_pdf/{fac_id}','FacturasController@facturas_pdf')->name('facturas.pdf');;
+
+Route::get('/facturas_pdf/{fac_id}','FacturasController@facturas_pdf')->name('facturas.pdf');
+
+
+Route::get('/reporte','ReporteController@index')->name('reporte');
+Route::post('/reporte/search','ReporteController@search')->name('reporte.search');
+Route::get('/reporte_pdf/{rep_id}','ReporteController@reporte_pdf')->name('reporte.pdf');
 
 

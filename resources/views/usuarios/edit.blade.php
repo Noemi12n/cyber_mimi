@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-
+<script src="{{asset('js/usuarios.js')}}"></script>
 <center><h3 class="bg-dark-write">Editar usuarios</h3></center>
-<form action="{{route('usuarios.update',$user->usu_id)}}" method="POST">
+<form action="{{route('usuarios.update',$user->usu_id)}}" method="POST" onsubmit="return validar()">
 	
 	@csrf
 	<div class="container">

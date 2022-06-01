@@ -18,7 +18,7 @@ class FacturasController extends Controller
     public function index()
     {
         //
-        $facturas=DB::select("SELECT * FROM facturas f JOIN clientes c ON f.fac_id=c.cli_id");
+        $facturas=DB::select("SELECT * FROM facturas f JOIN clientes c ON f.cli_id=c.cli_id");
         return view('facturas.index')
         ->with('facturas',$facturas)
 
@@ -146,8 +146,6 @@ class FacturasController extends Controller
 
         $pdf = PDF::loadView('facturas.pdf',[ 'facturas'=>$facturas[0],'detalles'=>$detalles ]);
         return $pdf->stream('facturas.pdf');
-
-
 
 
     }

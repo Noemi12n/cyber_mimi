@@ -3,6 +3,7 @@
 
 <h1>Comenzamos la Facturación</h1>
 <a href="{{route('facturas.create')}}" class="btn btn-primary"  >Nueva</a>
+<a href="{{route('reporte')}}" class="btn  btn-outline-primary"  >Reporte</a>
 <div class="container">
 	<table class="table">
 		<tr>
@@ -20,7 +21,7 @@
 			<td>{{$f->cli_nombre}}</td>
 			<td>
 				<a class="btn btn-info btn-sm" href="{{route('facturas.edit',$f->fac_id)}}">Editar</a>
-				<a class="btn btn-info btn-sm" href="{{route('facturas.destroy',$f->fac_id)}}">Eliminar</a>
+				
 				<a href="{{route('facturas.pdf',$f->fac_id)}}" class="btn btn-danger btn-sm">PDF</a>
 			</td>
 		</tr>

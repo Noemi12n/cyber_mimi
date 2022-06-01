@@ -2,6 +2,9 @@
 @section('content')
  <center> <h2 class="bg-dark text-white">Lista de los Productos</h2></center>
   <a href="{{route('productos.create')}}" class="btn btn-outline-primary">Nuevo</a>
+  @if(!empty(Session::get('sms')))
+  <h2 class="alert alert-success">{{Session::get('sms')}}</h2>
+  @endif
 
 	<table class="table table-striped">
 		<th> # </th>

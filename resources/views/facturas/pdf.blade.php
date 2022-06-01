@@ -6,36 +6,43 @@
 </style>
 <h3>Factura No:{{$facturas->fac_no}}</h3>
 <h3>Cliente:{{$facturas->cli_nombre}}</h3>
-<h3>Ruc:{{$facturas->cli_cedula}}</h3>
+<h3>Cedula:{{$facturas->cli_cedula}}</h3>
 <h3>Direccion:Quito</h3>
 <div style="background:#2BA0CC; text-align:center ;" >Detalle Factura</div>
 <table style="width:85%">
 	<tr>
-		<th>#</th>
-		<th>Cantidad</th>
-		<th>Producto</th>
-		<th>Vu</th>
-		<th>VT</th>
+	<th>#</th>
+			<th style="text-align: left;">Producto</th>
+			<th style="text-align: left;">Cantidad</th>
+			<th style="text-align: left;">Valor Unitario</th>
+			<th style="text-align: left;">Valor Total</th>
+		
 	</tr>
+	<?php 
+	      $subt=0;
+	   ?>
 	@foreach($detalles as $d)
+	<?php $subt+=$d->fad_vt;?>
+
 	<tr>
-		<td>{{$loop->iteration}}</td>
-		<td>{{$d->fad_cantidad}}</td>
-		<td>{{$d->pro_categoria}}</td>
-		<td style="text-align:right; ">{{ number_format($d->fad_vu,2) }}</td>
-		<td style="text-align:right; ">{{ number_format($d->fad_vt,2) }}</td>
+	<td>{{$loop->iteration}}</td>
+	            	<td>{{$d->pro_nombre}}</td>
+	            	
+	            	<td>{{$d->fad_cantidad}}</td>
+	            	
+	            	<td class="text-right">{{number_format($d->fad_vu,2)}}$</td>
+	            	<td class="text-right">{{number_format($d->fad_vt,2)}}$</td>
 	</tr>
 	@endforeach	
+	<?php 
+	            $vt=$subt;
+	         ?>
 	<tr>
-		<td colspan="3" style="text-align:right;">Subt:</td>
+		<td colspan="5" style="text-align:right;">Subt:{{$vt}}</td>
 	</tr>
+	
+	
 	<tr>
-		<td colspan="3" style="text-align:right;">Desc:{{$facturas->fac_descuento}}</td>
-	</tr>
-	<tr>
-		<td colspan="3" style="text-align:right;">IVA:</td>
-	</tr>
-	<tr>
-		<td colspan="3" style="text-align:right;">Total:</td>
+		<td colspan="5" style="text-align:right;">Total:{{$vt}}</td>
 	</tr>
 </table>

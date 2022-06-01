@@ -1,3 +1,5 @@
+<script src="{{asset('js/facturas.js')}}"></script>
+<script src="{{asset('js/facturas_detalles.js')}}"></script>
 <?php 
 if(isset($facturas)){
      $fac_id=$facturas->fac_id;
@@ -23,7 +25,7 @@ if(isset($facturas)){
      $fac_observaciones="";
 }
 ?>
-<form action="{{route('facturas.store')}}" method="POST">
+<form action="{{route('facturas.store')}}" method="POST" onsubmit="return validar()">
 	@csrf
 	<div class="row">
 		<div class="col-md-3">
@@ -41,7 +43,7 @@ if(isset($facturas)){
 		</div>
 		<div class="col-md-3">
 			<label for="fac_no">Numero de Factura</label>
-			<input type="text" id="fac_no" value="{{$fac_no}}" name="fac_no" required class="form-control">
+			<input type="number" id="fac_no" value="{{$fac_no}}" name="fac_no" required class="form-control">
 		</div>
 		<div class="col-md-3">
 			<label for="fac_fecha">Fecha</label>
@@ -81,7 +83,7 @@ if(isset($facturas)){
    </div>
 </form>
 
-<form action="{{route('facturas.detalles')}}" method="POST" >
+<form action="{{route('facturas.detalles')}}" method="POST" onsubmit="return validar()">
 	@csrf
 	<table class="table">
 		<tr>

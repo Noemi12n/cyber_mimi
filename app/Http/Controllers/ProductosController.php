@@ -102,7 +102,18 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-         Productos::destroy($id);
-        return redirect(route('productos'));
+         $productos=DB::Select("SELECT * FROM productos where pro_id=$id");
+
+         if (empty($productos)) {
+            $sms='Eliminado correstamente';
+            productos::destroy($id);
+             
+         }else{
+            $sms='No se puede eliminar';
+         }
+         echo "<h1 style='background:red;color:white'>
+            $sms
+            <a href='".route('productos')."'>Volver a productos</a>
+         </h1>";
     }
 }
